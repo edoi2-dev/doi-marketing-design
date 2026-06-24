@@ -1,0 +1,9 @@
+/* DOI Marketing + Design — Webfonts
+   ------------------------------------------------------------------
+   Brand fonts: Bebas Neue (display), Cormorant Garamond (editorial),
+   Montserrat (body/UI). No font binaries were supplied in the brand
+   package or the (empty) source repo, so these are loaded from Google
+   Fonts — the canonical source for all three families. Swap these for
+   self-hosted @font-face rules if/when licensed binaries are provided. */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap');

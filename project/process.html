@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Process · Doi Marketing + Design Co.</title>
+<link rel="stylesheet" href="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/styles.css" />
+<link rel="stylesheet" href="shared/site.css" />
+<link rel="icon" href="assets/logos/Doi-Icon-darkBK.svg" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="shared/shell.jsx"></script>
+
+<script type="text/babel">
+const { Button, Eyebrow, SectionHeading, Stat, Marquee } = window.DOIMarketingDesignDesignSystem_a12e37;
+const { Media, Nav, Footer, CTABand, PageHero } = window.DOIShell;
+
+function Steps() {
+  const steps = [
+    { n: '01', t: 'Diagnostic', d: 'We start with a director-level audit of your brand, channels, and competitive position. Nothing gets built until we know what is actually broken.', points: ['Brand and positioning review', 'Channel and funnel audit', 'Prioritized 90-day roadmap'] },
+    { n: '02', t: 'Strategy', d: 'We agree on priorities, channels, and measurable goals before any execution begins. You sign off on the plan, so there are no surprises.', points: ['Clear priorities and sequencing', 'Channel plan tied to goals', 'Defined success metrics'] },
+    { n: '03', t: 'Execution', d: 'The work ships. You get async updates and a living dashboard instead of meetings. One 60-minute call a month keeps us aligned.', points: ['Loom updates, not status calls', 'Shared Notion dashboard', 'One 60-minute monthly call'] },
+    { n: '04', t: 'Momentum', d: 'Marketing becomes a system that compounds. Each month builds on the last, and you always know what is happening and why.', points: ['Compounding systems, not one-offs', 'Monthly reporting and review', 'Scale or pause as needs change'] },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container" style={{ padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        {steps.map((s, i) => (
+          <div key={s.n} className="doi-step doi-split-2" style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 'var(--space-8)', alignItems: 'start', padding: 'var(--space-8) 0', borderTop: i === 0 ? 'none' : '1px solid var(--border)' }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-5)' }}>
+              <span style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-number)', lineHeight: 0.9, color: 'var(--crimson)' }}>{s.n}</span>
+              <h2 className="doi-display" style={{ fontSize: 'clamp(2rem, 3vw, 3rem)', margin: 0 }}>{s.t}</h2>
+            </div>
+            <div>
+              <p style={{ margin: 0, fontFamily: 'var(--font-editorial)', fontWeight: 300, fontSize: 'var(--text-lead)', lineHeight: 1.45, color: 'var(--text-primary)', maxWidth: '46ch' }}>{s.d}</p>
+              <ul style={{ listStyle: 'none', margin: 'var(--space-6) 0 0', padding: 0, display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3) var(--space-6)' }}>
+                {s.points.map((p) => (
+                  <li key={p} style={{ display: 'flex', alignItems: 'center', gap: 10, fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>
+                    <span style={{ width: 6, height: 6, background: 'var(--crimson)', display: 'inline-block' }} />{p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Communication() {
+  const tools = [
+    { t: 'Loom', d: 'Recorded walkthroughs of work, thinking, and next steps. Watch on your time, reply when it suits you.' },
+    { t: 'Notion', d: 'A shared dashboard with the roadmap, work in progress, and reporting. Always current, always visible.' },
+    { t: 'One Call', d: 'A single 60-minute strategy call each month. Focused, prepared, and worth the hour. No standing weekly meetings.' },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', width: 620, height: 620, left: '50%', top: '-34%', transform: 'translateX(-50%)', background: 'var(--glow-crimson)' }} />
+      <div className="doi-container" style={{ position: 'relative', padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <SectionHeading eyebrow="How we work together" title="Async-first." emphasis="No micromanagement." variant="display" align="center" style={{ alignItems: 'center', margin: '0 auto var(--space-8)' }} />
+        <div className="doi-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-5)' }}>
+          {tools.map((it) => (
+            <div key={it.t} style={{ padding: 'var(--space-7) var(--space-6)', border: '1px solid var(--border)', background: 'var(--surface-1)' }}>
+              <h3 className="doi-display" style={{ fontSize: '2rem', marginBottom: 14 }}>{it.t}</h3>
+              <p style={{ margin: 0, fontSize: 'var(--text-sm)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)' }}>{it.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Expect() {
+  const rows = [
+    { k: 'Week 1', v: 'Diagnostic delivered, roadmap agreed, access set up.' },
+    { k: 'Weeks 2 to 4', v: 'First priorities in motion. Async updates begin.' },
+    { k: 'Month 1 close', v: 'Strategy call, reporting, and the plan for month two.' },
+    { k: 'Ongoing', v: 'Compounding systems, monthly reviews, no weekly calls.' },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container doi-split-2" style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.2fr', gap: 'var(--space-8)', padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <SectionHeading eyebrow="What to expect" title="The first 30 days," emphasis="mapped." />
+        <div style={{ borderTop: '1px solid var(--border)' }}>
+          {rows.map((r) => (
+            <div key={r.k} className="doi-row-between" style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'baseline', padding: 'var(--space-5) 0', borderBottom: '1px solid var(--border)' }}>
+              <span style={{ flex: '0 0 34%', fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--crimson)' }}>{r.k}</span>
+              <span style={{ fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: 'var(--text-body)', lineHeight: 1.6, color: 'var(--text-primary)' }}>{r.v}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Testimonial() {
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container doi-split-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: 'var(--space-8)', alignItems: 'center', padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <Media label="" ratio="1 / 1" src="assets/photos/Eric-Headshot.png" position="center 30%" overlay="linear-gradient(to top, rgba(10,11,12,0.45) 0%, rgba(10,11,12,0.08) 45%, rgba(10,11,12,0) 100%)" />
+        <div>
+          <Eyebrow>The difference</Eyebrow>
+          <blockquote className="doi-editorial" style={{ margin: '24px 0 0', fontSize: 'var(--text-title-lg)', lineHeight: 1.25, color: 'var(--text-primary)' }}>
+            &ldquo;Founders do not need more meetings. They need someone senior who owns the outcome and ships. That is the entire process, <em>built around your time.</em>&rdquo;
+          </blockquote>
+          <div style={{ marginTop: 'var(--space-6)', display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div style={{ width: 1, height: 40, background: 'var(--crimson)' }} />
+            <div>
+              <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, letterSpacing: '0.08em', color: 'var(--text-primary)' }}>Eric Doi</div>
+              <div style={{ fontSize: 'var(--text-xs)', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Founder · Marketing &amp; Creative Director</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  React.useEffect(() => { window.DOIShell.initReveal(); }, []);
+  return (
+    <div style={{ background: 'var(--bg)' }}>
+      <Nav />
+      <PageHero eyebrow="How it works" title="Async-first," emphasis="built for busy founders." lede="A clear path from diagnosis to momentum, run on your schedule. No weekly status calls, no micromanagement. Just senior marketing that ships and compounds." />
+      <Marquee items={['Diagnose', 'Strategize', 'Execute', 'Report', 'Compound', 'Repeat']} />
+      <Steps />
+      <Communication />
+      <Expect />
+      <Testimonial />
+      <CTABand heading="A process that respects" emphasis="your time." body="Start with a $497 diagnostic. You will have a 90-day roadmap in hand within the first week." primary="Book a Diagnostic" secondary="See engagements" secondaryHref="services.html" />
+      <Footer />
+    </div>
+  );
+}
+
+window.__DOI_PAGE__ = 'process';
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

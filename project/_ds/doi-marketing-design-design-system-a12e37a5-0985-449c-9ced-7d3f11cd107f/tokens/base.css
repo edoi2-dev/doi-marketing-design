@@ -1,0 +1,98 @@
+/* DOI Marketing + Design — base layer
+   Resets + brand primitives that build directly on the tokens.
+   Imported last so it can consume every token. */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-weight: var(--fw-light);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle film-grain texture overlay for the dark canvas.
+   Apply .doi-grain to a full-bleed wrapper, or rely on body::after. */
+body::after,
+.doi-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- Headings ---- */
+h1, h2, h3, h4 {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: var(--fw-regular);
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---- Brand primitives (utility classes) ---- */
+
+/* Display headline — Bebas Neue, all caps, tight */
+.doi-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  text-transform: uppercase;
+  line-height: var(--lh-hero);
+  letter-spacing: var(--ls-display);
+  color: var(--text-primary);
+}
+
+/* Editorial title — Cormorant Garamond, mixed case */
+.doi-editorial {
+  font-family: var(--font-editorial);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-title);
+  color: var(--text-primary);
+}
+.doi-editorial em { font-style: italic; }
+
+/* Eyebrow — thin crimson line + small caps label */
+.doi-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+  color: var(--accent);
+}
+.doi-eyebrow::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* Hairline section divider */
+.doi-rule { height: 1px; border: 0; background: var(--border); }
+
+/* Container */
+.doi-container {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--section-pad-x);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}

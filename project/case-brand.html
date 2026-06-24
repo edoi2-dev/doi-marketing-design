@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Doi Brand Identity · Doi Marketing + Design Co.</title>
+<link rel="stylesheet" href="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/styles.css" />
+<link rel="stylesheet" href="shared/site.css" />
+<link rel="icon" href="assets/logos/Doi-Icon-darkBK.svg" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="shared/shell.jsx"></script>
+<script type="text/babel" src="shared/case.jsx"></script>
+
+<script type="text/babel">
+const { Marquee } = window.DOIMarketingDesignDesignSystem_a12e37;
+const { Nav, Footer, CTABand } = window.DOIShell;
+const { CaseHero, Section, Prose, ChallengeCards, PullQuote, CaseFootNav } = window.DOICase;
+
+const layers = [
+  { number: 'L1', tag: 'Visual', title: 'Geometric precision, built to scale', body: 'A clean, modern geometric mark built to scale. Works at 16px as a favicon or 16 inches on a tradeshow banner. Designed with swag in mind from day one.' },
+  { number: 'L2', tag: 'Identity · D · O · I', title: 'The mark spells Doi', body: 'The white diagonal lines form the D. The diamond negative space between the chevrons is the O. The crimson vertical bar is the I. Hidden in plain sight.' },
+  { number: 'L3', tag: 'Legacy · Kruz & Knox', title: 'Two sons, embedded in the geometry', body: 'Two hidden K shapes are embedded in the geometry — one for each of the founder\u2019s sons, Kruz and Knox. Every client project, every invoice, every piece of swag carries their names.' },
+  { number: 'L4', tag: 'Signal', title: 'Depth, not decoration', body: 'A brand with this much meaning layered into its mark signals something to potential clients — this person builds with depth, not decoration. That\u2019s the whole pitch, encoded in a logo.' },
+];
+
+const principles = [
+  { number: '01', title: 'Dark Always', body: 'Never light backgrounds. Non-negotiable.' },
+  { number: '02', title: 'Accent Not Fill', body: 'Crimson is used sparingly. Its power comes from restraint.' },
+  { number: '03', title: 'Sharp Edges', body: 'No rounded corners. The geometry of the mark is angular — the brand follows.' },
+  { number: '04', title: 'Earn Every Element', body: 'Nothing decorative. If it can be removed without losing meaning, remove it.' },
+];
+
+const palette = [
+  { hex: '#0A0B0C', name: 'Dark BG', role: 'Primary page background. Always dark.', text: '#F7F7F8' },
+  { hex: '#2F3237', name: 'Charcoal', role: 'Secondary surfaces and cards.', text: '#F7F7F8' },
+  { hex: '#751D2F', name: 'Crimson', role: 'The one accent. Used sparingly.', text: '#F7F7F8' },
+  { hex: '#B0B3B8', name: 'Silver', role: 'Secondary text and labels.', text: '#0A0B0C' },
+  { hex: '#F7F7F8', name: 'Off-White', role: 'Primary text on dark.', text: '#0A0B0C' },
+];
+
+const fonts = [
+  { family: "'Bebas Neue', sans-serif", name: 'Bebas Neue', sample: 'AaBbCc', role: 'Display / Hero', desc: 'Large headlines, section numbers, hero type. ALL CAPS, tight leading.', caps: true },
+  { family: "'Cormorant Garamond', serif", name: 'Cormorant Garamond', sample: 'AaBbCc', role: 'Editorial / Titles', desc: 'Section titles, subheadings, pull quotes. Mixed case with italic emphasis.', caps: false },
+  { family: "'Montserrat', sans-serif", name: 'Montserrat', sample: 'AaBbCc', role: 'Body / UI', desc: 'Body copy, nav, labels, CTAs. Light to medium weights, generous line-height.', caps: false },
+];
+
+function Swatches() {
+  return (
+    <div className="doi-card-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 'var(--space-4)' }}>
+      {palette.map((c) => (
+        <div key={c.hex} style={{ border: '1px solid var(--border)' }}>
+          <div style={{ background: c.hex, height: 150, borderBottom: '1px solid var(--border)', display: 'flex', alignItems: 'flex-end', padding: 14 }}>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 600, letterSpacing: '0.12em', color: c.text, opacity: 0.7 }}>{c.hex}</span>
+          </div>
+          <div style={{ padding: 'var(--space-5) var(--space-5) var(--space-6)' }}>
+            <div className="doi-display" style={{ fontSize: '1.5rem', marginBottom: 8 }}>{c.name}</div>
+            <p style={{ margin: 0, fontSize: 'var(--text-xs)', lineHeight: 1.5, color: 'var(--text-secondary)' }}>{c.role}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function TypeColumns() {
+  return (
+    <div className="doi-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, borderTop: '1px solid var(--border)' }}>
+      {fonts.map((f, i) => (
+        <div key={f.name} style={{ padding: 'var(--space-7) var(--space-6)', borderBottom: '1px solid var(--border)', borderRight: i < 2 ? '1px solid var(--border)' : 'none' }}>
+          <div style={{ fontFamily: f.family, fontSize: f.caps ? '4.5rem' : '4rem', lineHeight: 0.9, color: 'var(--text-primary)', textTransform: f.caps ? 'uppercase' : 'none', marginBottom: 'var(--space-6)' }}>{f.sample}</div>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--crimson)', marginBottom: 12 }}>{f.role}</div>
+          <h3 className="doi-display" style={{ fontSize: '1.7rem', margin: '0 0 12px' }}>{f.name}</h3>
+          <p style={{ margin: 0, fontSize: 'var(--text-sm)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)' }}>{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MarkDisplay() {
+  return (
+    <div style={{ position: 'relative', border: '1px solid var(--border)', background: 'linear-gradient(150deg, #15171a 0%, #0d0e10 55%, #050506 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 'var(--space-10) var(--space-8)', marginBottom: 'var(--space-8)', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', width: 420, height: 420, background: 'var(--glow-crimson)' }} />
+      <img src="assets/logos/Doi-Icon-darkBK.svg" alt="Doi mark" style={{ position: 'relative', height: 180, maxWidth: '60%' }} />
+    </div>
+  );
+}
+
+function App() {
+  React.useEffect(() => { window.DOIShell.initReveal(); }, []);
+  return (
+    <div style={{ background: 'var(--bg)' }}>
+      <Nav />
+      <CaseHero
+        eyebrow="Case Study — Brand Identity"
+        title="Doi Marketing + Design Co."
+        subtitle="Logo Mark, Color System, Typography, Brand Voice"
+        label="Self-initiated"
+        meta={[
+          { k: 'Type', v: 'Brand Identity' },
+          { k: 'Scope', v: 'Full System' },
+          { k: 'Deliverable', v: 'Guidelines' },
+          { k: 'Year', v: '2025' },
+        ]}
+        mediaLabel="" mediaSrc="assets/photos/Doi-Icon-Leather.png" mediaPosition="center"
+      />
+
+      <Marquee items={['Mark', 'Color', 'Type', 'Voice', 'Principles', 'System']} />
+
+      <Section eyebrow="Overview" headline={<>A brand built with <em style={{ fontStyle: 'italic', color: 'var(--crimson)' }}>intention</em> at every layer</>}>
+        <Prose max="72ch" style={{ marginBottom: 'var(--space-8)' }}>
+          Most freelancers launch with a generic wordmark and a stock template. Doi Marketing + Design Co. was built the opposite way — with the same rigor applied to client brands. Every decision, from the mark geometry to the color palette to the typographic system, was made deliberately and can be defended strategically.
+        </Prose>
+        <ChallengeCards cols={2} items={[
+          { tag: 'The Challenge', title: 'One mark, two audiences', body: 'Build a brand that simultaneously attracts fractional marketing clients and full-time employer interest — without looking like an agency to one audience or a freelancer to the other.' },
+          { tag: 'The Approach', title: 'Position around a person', body: 'Position around a person, not a service. Design a mark that reads as powerful at favicon size and commanding at tradeshow scale — with layers of meaning visible only on closer inspection.' },
+        ]} />
+      </Section>
+
+      <Section eyebrow="The Mark" headline={<>Geometric precision. <em style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>Layered meaning.</em></>} glow>
+        <MarkDisplay />
+        <ChallengeCards cols={2} items={layers} />
+      </Section>
+
+      <Section eyebrow="Color System" headline={<>Five colors. <em style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>One clear hierarchy.</em></>}>
+        <Swatches />
+      </Section>
+
+      <Section eyebrow="Typography" headline={<>Three fonts. <em style={{ fontStyle: 'italic', color: 'var(--crimson)' }}>One voice.</em></>}>
+        <TypeColumns />
+      </Section>
+
+      <Section eyebrow="Brand Principles" headline="The rules the brand always follows.">
+        <ChallengeCards cols={2} items={principles} />
+      </Section>
+
+      <PullQuote cite="The brand, in one line">
+        &ldquo;A brand that works on the surface for every client who sees it — and carries something <em style={{ fontStyle: 'italic', color: 'var(--crimson)' }}>personal</em> for the one person who built it.&rdquo;
+      </PullQuote>
+
+      <CaseFootNav
+        prev={{ href: 'case-vssl.html', label: 'VSSL MX Series' }}
+        next={{ href: 'case-website.html', label: 'Doi Website' }}
+      />
+
+      <CTABand heading="Need a brand built with" emphasis="this much intent?" body="Every engagement starts with a $497 diagnostic and a 90-day roadmap. See exactly where your brand can grow next." primary="Book a Diagnostic" secondary="See more work" secondaryHref="work.html" />
+      <Footer />
+    </div>
+  );
+}
+
+window.__DOI_PAGE__ = 'work';
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Doi Marketing + Design Co. · Strategy. Direction. Execution.</title>
+<link rel="stylesheet" href="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/styles.css" />
+<link rel="stylesheet" href="shared/site.css" />
+<link rel="icon" href="assets/logos/Doi-Icon-darkBK.svg" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="shared/shell.jsx"></script>
+<script type="text/babel" src="shared/tweaks-panel.jsx"></script>
+<script type="text/babel" src="shared/hero-visual.jsx"></script>
+
+<script type="text/babel">
+const { Button, Eyebrow, SectionHeading, Stat, Card, Badge, Marquee } = window.DOIMarketingDesignDesignSystem_a12e37;
+const { Media, Nav, Footer, CTABand } = window.DOIShell;
+const { HeroVisual } = window.DOIHeroVisual;
+const { useTweaks, TweaksPanel, TweakSection, TweakRadio, TweakToggle, TweakSlider } = window;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "heroVariant": "echo",
+  "heroMotion": true,
+  "heroGlow": 1.6
+}/*EDITMODE-END*/;
+
+function Hero({ variant, motion, glow }) {
+  return (
+    <section id="top" style={{ position: 'relative', minHeight: '92vh', display: 'flex', alignItems: 'flex-end', borderBottom: '1px solid var(--border)', overflow: 'hidden' }}>
+      <HeroVisual variant={variant} motion={motion} glow={glow} />
+      <div className="doi-container" style={{ position: 'relative', width: '100%', paddingBottom: 'var(--space-9)', paddingTop: 'calc(var(--nav-height) + var(--space-8))' }}>
+        <Eyebrow>Fractional Marketing Director</Eyebrow>
+        <div className="doi-split-2" style={{ display: 'grid', gridTemplateColumns: '1.25fr 1fr', gap: 'var(--space-8)', alignItems: 'end', marginTop: 28 }}>
+          <h1 className="doi-display" style={{ fontSize: 'var(--text-hero)', margin: 0 }}>
+            Strategy.<br />Direction.<br /><span style={{ color: 'var(--crimson)' }}>Execution.</span>
+          </h1>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 28, paddingBottom: 12 }}>
+            <p style={{ margin: 0, fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: 'var(--text-body-lg)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)', maxWidth: '44ch' }}>
+              Senior marketing leadership and creative direction for growing brands, without the cost of a full-time hire. Director-level thinking, built into systems that compound month over month.
+            </p>
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+              <Button variant="primary" arrow href="contact.html">Book a Diagnostic</Button>
+              <Button variant="secondary" href="work.html">View Work</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function IntroSplit() {
+  const stats = [
+    { v: '10+', l: 'Years of marketing leadership' },
+    { v: 'Full Stack', l: 'Strategy, creative & execution in one' },
+    { v: '48HR', l: 'Turnaround guaranteed' },
+    { v: 'Zero', l: 'Agency markup or hidden fees' },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container doi-split-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-8)', alignItems: 'center', padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <Media label="VSSL • Website Design" ratio="4 / 5" src="assets/photos/TruAudio-Web-Mock2.jpg" position="center 42%" overlay="linear-gradient(to bottom, rgba(10,11,12,0.12), rgba(10,11,12,0.45))" />
+        <div>
+          <SectionHeading eyebrow="A partner, not a vendor" title="Most consultants strategize" emphasis="or execute. We do both.">
+            Doi Marketing + Design is the senior marketing function for founders who are smart, busy, and frustrated that their marketing is not working as hard as they are. Director-level thinking and creative craft, embedded into your brand rather than bolted on.
+          </SectionHeading>
+          <div className="doi-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6) var(--space-7)', marginTop: 'var(--space-7)', borderTop: '1px solid var(--border)', paddingTop: 'var(--space-6)' }}>
+            {stats.map((s) => <Stat key={s.l} value={s.v} label={s.l} />)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ServicesPreview() {
+  const services = [
+    { n: '01', t: 'Marketing Diagnostic', p: 'A director-level audit of brand, channels, and competitive position. You walk away with a prioritized 90-day action roadmap.', price: '$497', unit: 'one-time', tag: 'Entry point' },
+    { n: '02', t: 'Fractional Director', p: 'Up to 20 hrs / month of ongoing marketing leadership and execution. Monthly strategy call, async comms, shared dashboard.', price: '$2,500', unit: '/ month', tag: 'Most popular' },
+    { n: '03', t: 'Embedded Partner', p: 'Up to 40 hrs / month. A full marketing department: strategy, creative direction, vendor management, campaigns, events.', price: '$4,500', unit: '/ month', tag: null },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container" style={{ padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <div className="doi-row-between" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24, marginBottom: 'var(--space-8)' }}>
+          <SectionHeading eyebrow="Engagements" title="Senior marketing," emphasis="three ways in." variant="display" />
+          <Button variant="ghost" arrow href="services.html">All services</Button>
+        </div>
+        <div className="doi-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-5)' }}>
+          {services.map((s) => (
+            <Card key={s.n} number={s.n} padding="var(--space-7) var(--space-6) var(--space-6)">
+              <div style={{ display: 'flex', flexDirection: 'column', minHeight: 300 }}>
+                {s.tag && <div style={{ marginBottom: 16 }}><Badge tone={s.tag === 'Most popular' ? 'solid' : 'neutral'}>{s.tag}</Badge></div>}
+                <h3 style={{ margin: 0, fontFamily: 'var(--font-editorial)', fontWeight: 300, fontSize: 'var(--text-title)', color: 'var(--text-primary)' }}>{s.t}</h3>
+                <p style={{ margin: '14px 0 0', fontSize: 'var(--text-sm)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)' }}>{s.p}</p>
+                <div style={{ marginTop: 'auto', paddingTop: 'var(--space-6)', display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '2.6rem', color: 'var(--text-primary)', lineHeight: 1 }}>{s.price}</span>
+                  <span style={{ fontSize: 'var(--text-xs)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{s.unit}</span>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WorkTile({ t, cat, d, span, tall, href, mediaSrc, position }) {
+  const [hover, setHover] = React.useState(false);
+  return (
+    <a href={href || 'work.html'} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} style={{ gridColumn: `span ${span}`, position: 'relative', display: 'block', overflow: 'hidden', border: '1px solid var(--border)' }}>
+      <Media label={mediaSrc ? '' : cat} ratio={tall ? '3 / 4' : '4 / 3'} src={mediaSrc} position={position}
+        overlay={hover ? 'linear-gradient(to top, rgba(10,11,12,0.85) 0%, rgba(10,11,12,0.38) 48%, rgba(10,11,12,0.10) 100%)' : 'linear-gradient(to top, rgba(10,11,12,0.72) 0%, rgba(10,11,12,0.18) 58%, rgba(10,11,12,0) 100%)'}
+        style={{ position: 'absolute', inset: 0, height: '100%', aspectRatio: 'auto', border: 'none', transition: 'transform var(--dur-slow) var(--ease-out)', transform: hover ? 'scale(1.03)' : 'scale(1)' }} />
+      <div style={{ position: 'relative', height: '100%', padding: 'var(--space-6)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+        <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--crimson)' }}>{cat}</span>
+        <h3 className="doi-display" style={{ fontSize: 'clamp(1.8rem, 2.2vw, 2.4rem)', margin: '8px 0 0', lineHeight: 0.96 }}>{t}</h3>
+        <p style={{ margin: '10px 0 0', fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontWeight: 300, fontSize: 'var(--text-body)', lineHeight: 1.35, color: 'var(--text-secondary)', maxWidth: '32ch' }}>{d}</p>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 'var(--space-5)', fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 600, letterSpacing: 'var(--ls-button)', textTransform: 'uppercase', color: 'var(--text-primary)', maxHeight: hover ? 30 : 0, opacity: hover ? 1 : 0, overflow: 'hidden', transition: 'all var(--dur) var(--ease-out)' }}>
+          View Case Study
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" style={{ transform: hover ? 'translateX(3px)' : 'none', transition: 'transform var(--dur) var(--ease-out)' }}><line x1="5" y1="12" x2="19" y2="12" /><polyline points="13 6 19 12 13 18" /></svg>
+        </span>
+      </div>
+      <span style={{ position: 'absolute', left: 0, bottom: 0, height: 3, background: 'var(--crimson)', width: hover ? '100%' : '0%', transition: 'width var(--dur-slow) var(--ease-out)' }} />
+    </a>
+  );
+}
+
+function WorkPreview() {
+  const projects = [
+    { t: 'VSSL MX Series', cat: 'Product Launch Campaign', d: 'A 12-month global launch. One marketing director.', span: 7, tall: false, href: 'case-vssl.html', mediaSrc: 'assets/photos/VSSL-MS1-lifestyle.png', position: 'center' },
+    { t: 'Doi Brand Identity', cat: 'Brand Identity', d: 'Four layers. One mark. Built for swag.', span: 5, tall: false, href: 'case-brand.html', mediaSrc: 'assets/photos/Doi-Icon-Leather.png', position: 'center' },
+    { t: 'Doi Website', cat: 'Brand Strategy + Web Design', d: 'Built with AI. Designed with intention.', span: 12, tall: false, href: 'case-website.html', mediaSrc: 'assets/photos/Doi-Website-tile.jpg', position: 'center' },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container" style={{ padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <div className="doi-row-between" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24, marginBottom: 'var(--space-8)' }}>
+          <SectionHeading eyebrow="Selected work" title="Brands built and" emphasis="scaled, hands-on." variant="display" />
+          <Button variant="ghost" arrow href="work.html">View all work</Button>
+        </div>
+        <div className="doi-work-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gridAutoRows: 'minmax(300px, auto)', gap: 'var(--space-4)' }}>
+          {projects.map((p) => <WorkTile key={p.t} {...p} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProcessPreview() {
+  const steps = [
+    { n: '01', t: 'Diagnostic', d: 'Brand, channel, and competitor audit that becomes a prioritized 90-day roadmap.' },
+    { n: '02', t: 'Strategy', d: 'Priorities, channels, and measurable goals, agreed before we build.' },
+    { n: '03', t: 'Execution', d: 'Async updates via Loom, a shared Notion dashboard, one 60-minute monthly call.' },
+    { n: '04', t: 'Momentum', d: 'Systems that compound month over month. No weekly status calls.' },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', width: 600, height: 600, left: '50%', top: '-30%', transform: 'translateX(-50%)', background: 'var(--glow-crimson)' }} />
+      <div className="doi-container" style={{ position: 'relative', padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <SectionHeading eyebrow="How it works" title="Async-first," emphasis="built for busy founders." variant="display" align="center" style={{ alignItems: 'center', margin: '0 auto var(--space-8)' }} />
+        <div className="doi-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-5)' }}>
+          {steps.map((s) => (
+            <div key={s.n} style={{ paddingTop: 'var(--space-5)', borderTop: '2px solid var(--crimson)' }}>
+              <div style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', lineHeight: 1, color: 'var(--text-primary)' }}>{s.n}</div>
+              <h3 style={{ margin: '18px 0 10px', fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-primary)' }}>{s.t}</h3>
+              <p style={{ margin: 0, fontSize: 'var(--text-sm)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)' }}>{s.d}</p>
+            </div>
+          ))}
+        </div>
+        <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
+          <Button variant="secondary" href="process.html">See the full process</Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Testimonial() {
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container doi-split-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: 'var(--space-8)', alignItems: 'center', padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <Media label="Eric Doi" ratio="1 / 1" src="assets/photos/Eric-Headshot.png" position="center 22%" overlay="linear-gradient(to bottom, rgba(10,11,12,0.10), rgba(10,11,12,0.42))" />
+        <div>
+          <Eyebrow>The difference</Eyebrow>
+          <blockquote className="doi-editorial" style={{ margin: '24px 0 0', fontSize: 'var(--text-title-lg)', lineHeight: 1.25, color: 'var(--text-primary)' }}>
+            &ldquo;Director-level thinking <em>without</em> a director-level salary. We have built brands from inception and we know what it takes to launch and scale.&rdquo;
+          </blockquote>
+          <div style={{ marginTop: 'var(--space-6)', display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div style={{ width: 1, height: 40, background: 'var(--crimson)' }} />
+            <div>
+              <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, letterSpacing: '0.08em', color: 'var(--text-primary)' }}>Eric Doi</div>
+              <div style={{ fontSize: 'var(--text-xs)', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Founder · Marketing &amp; Creative Director</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  React.useEffect(() => { window.DOIShell.initReveal(); }, []);
+  return (
+    <div style={{ background: 'var(--bg)' }}>
+      <Nav />
+      <Hero variant={t.heroVariant} motion={t.heroMotion} glow={t.heroGlow} />
+      <Marquee items={['Strategy', 'Direction', 'Execution', 'Brand Systems', 'Product Launches', 'Tradeshows', 'Campaigns', 'Creative Direction']} />
+      <IntroSplit />
+      <ServicesPreview />
+      <WorkPreview />
+      <ProcessPreview />
+      <Testimonial />
+      <CTABand heading="Your marketing should work as hard as" emphasis="you do." body="Start with a $497 diagnostic. Walk away with a 90-day roadmap, whether or not we work together after." primary="Book a Diagnostic" secondary="See engagements" secondaryHref="services.html" />
+      <Footer />
+      <TweaksPanel>
+        <TweakSection label="Home hero" />
+        <TweakRadio label="Visual" value={t.heroVariant}
+          options={[{ value: 'echo', label: 'Echo' }, { value: 'strata', label: 'Strata' }, { value: 'vector', label: 'Vector' }]}
+          onChange={(v) => setTweak('heroVariant', v)} />
+        <TweakToggle label="Ambient motion" value={t.heroMotion} onChange={(v) => setTweak('heroMotion', v)} />
+        <TweakSlider label="Glow intensity" value={t.heroGlow} min={0} max={1.6} step={0.1} onChange={(v) => setTweak('heroGlow', v)} />
+      </TweaksPanel>
+    </div>
+  );
+}
+
+window.__DOI_PAGE__ = 'home';
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

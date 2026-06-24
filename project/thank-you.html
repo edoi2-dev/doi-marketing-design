@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inquiry Received · Doi Marketing + Design Co.</title>
+<link rel="stylesheet" href="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/styles.css" />
+<link rel="stylesheet" href="shared/site.css" />
+<link rel="icon" href="assets/logos/Doi-Icon-darkBK.svg" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="shared/shell.jsx"></script>
+
+<script type="text/babel">
+const { Button, Eyebrow } = window.DOIMarketingDesignDesignSystem_a12e37;
+const { Nav, Footer, initReveal } = window.DOIShell;
+
+const steps = [
+  {
+    n: '01',
+    t: 'Form received',
+    d: 'Your inquiry is in. Eric reviews every submission directly — no filtering through an account manager.',
+  },
+  {
+    n: '02',
+    t: 'Reply within one business day',
+    d: 'You will hear back from Eric directly. He may ask a follow-up question or two before proposing next steps.',
+  },
+  {
+    n: '03',
+    t: 'We book the diagnostic',
+    d: 'A short call to confirm scope, then your director-level audit and 90-day roadmap. Yours to keep either way.',
+  },
+];
+
+function Hero() {
+  return (
+    <section style={{ position: 'relative', borderBottom: '1px solid var(--border)', overflow: 'hidden' }}>
+      <img
+        src="assets/logos/Doi-Icon-darkBK.svg"
+        alt=""
+        aria-hidden="true"
+        style={{ position: 'absolute', right: '-4%', top: '6%', height: '112%', opacity: 0.04, filter: 'grayscale(1)' }}
+      />
+      <div style={{ position: 'absolute', width: 640, height: 640, left: '-12%', top: '-28%', background: 'var(--glow-crimson)' }} />
+      <div className="doi-container" style={{ position: 'relative', paddingTop: 'calc(var(--nav-height) + var(--space-9))', paddingBottom: 'var(--space-9)' }}>
+        <Eyebrow>Received</Eyebrow>
+        <h1 className="doi-display" style={{ fontSize: 'var(--text-hero)', margin: '26px 0 0', maxWidth: '14ch' }}>
+          We will be in <span style={{ color: 'var(--crimson)' }}>touch.</span>
+        </h1>
+        <p style={{ margin: '28px 0 0', maxWidth: '52ch', fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: 'var(--text-body-lg)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)' }}>
+          Your inquiry is confirmed. Eric will reply within one business day — not an automated sequence, a direct response.
+        </p>
+        <div style={{ marginTop: 'var(--space-7)', display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+          <Button variant="secondary" href="process.html">See how we work</Button>
+          <Button variant="ghost" arrow href="work.html">View work</Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function NextSteps() {
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container" style={{ padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <Eyebrow>What happens next</Eyebrow>
+        <div style={{ marginTop: 'var(--space-8)', display: 'flex', flexDirection: 'column' }}>
+          {steps.map((s, i) => (
+            <div
+              key={s.n}
+              className="doi-split-2"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '0.85fr 1.15fr',
+                gap: 'var(--space-8)',
+                alignItems: 'start',
+                padding: 'var(--space-8) 0',
+                borderTop: i === 0 ? 'none' : '1px solid var(--border)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-5)' }}>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-number)', lineHeight: 0.9, color: 'var(--crimson)' }}>{s.n}</span>
+                <h2 className="doi-display" style={{ fontSize: 'clamp(2rem, 3vw, 3rem)', margin: 0 }}>{s.t}</h2>
+              </div>
+              <p style={{ margin: 0, fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: 'var(--text-body-lg)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)' }}>
+                {s.d}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  React.useEffect(() => { initReveal(); }, []);
+  return (
+    <div style={{ background: 'var(--bg)' }}>
+      <Nav />
+      <Hero />
+      <NextSteps />
+      <Footer />
+    </div>
+  );
+}
+
+window.__DOI_PAGE__ = 'contact';
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

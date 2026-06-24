@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Services · Doi Marketing + Design Co.</title>
+<link rel="stylesheet" href="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/styles.css" />
+<link rel="stylesheet" href="shared/site.css" />
+<link rel="icon" href="assets/logos/Doi-Icon-darkBK.svg" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="shared/shell.jsx"></script>
+
+<script type="text/babel">
+const { Button, Eyebrow, SectionHeading, Card, Badge, Stat, Marquee } = window.DOIMarketingDesignDesignSystem_a12e37;
+const { Media, Nav, Footer, CTABand, PageHero } = window.DOIShell;
+
+const CheckRow = ({ children }) => (
+  <li style={{ display: 'flex', gap: 12, alignItems: 'flex-start', fontSize: 'var(--text-sm)', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" strokeWidth="2" strokeLinecap="square" style={{ marginTop: 4, flex: '0 0 auto' }}>
+      <polyline points="4 12 10 18 20 6" />
+    </svg>
+    <span>{children}</span>
+  </li>
+);
+
+function Engagements() {
+  const tiers = [
+    {
+      n: '01', t: 'Marketing Diagnostic', price: '$497', unit: 'one-time', tag: 'Entry point', tone: 'neutral',
+      who: 'For founders who suspect their marketing is off but cannot name exactly where.',
+      includes: ['Director-level audit of brand, channels, and positioning', 'Competitive landscape review', 'Prioritized 90-day action roadmap', '60-minute walkthrough call', 'Yours to keep, with or without a retainer'],
+    },
+    {
+      n: '02', t: 'Fractional Director', price: '$2,500', unit: '/ month', tag: 'Most popular', tone: 'solid',
+      who: 'For teams that have a product and momentum but no senior marketing owner.',
+      includes: ['Up to 20 hrs / month of leadership and execution', 'Monthly strategy and priorities call', 'Async comms via Loom and Slack', 'Shared Notion dashboard and reporting', 'Creative direction across campaigns', 'Pause or scale anytime'],
+    },
+    {
+      n: '03', t: 'Embedded Partner', price: '$4,500', unit: '/ month', tag: null, tone: 'neutral',
+      who: 'For brands ready to treat marketing as a full department, not a side project.',
+      includes: ['Up to 40 hrs / month, your full marketing function', 'Strategy plus hands-on creative direction', 'Vendor and agency management', 'Campaign and tradeshow production', 'Quarterly planning and goal setting', 'Priority response and availability'],
+    },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container" style={{ padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <div className="doi-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'var(--space-5)', alignItems: 'stretch' }}>
+          {tiers.map((s) => (
+            <Card key={s.n} number={s.n} padding="var(--space-7) var(--space-6) var(--space-6)" style={{ display: 'flex' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                {s.tag && <div style={{ marginBottom: 16 }}><Badge tone={s.tone === 'solid' ? 'solid' : 'neutral'}>{s.tag}</Badge></div>}
+                <h3 style={{ margin: 0, fontFamily: 'var(--font-editorial)', fontWeight: 300, fontSize: 'var(--text-title)', color: 'var(--text-primary)' }}>{s.t}</h3>
+                <div style={{ margin: '18px 0 4px', display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', color: 'var(--text-primary)', lineHeight: 1 }}>{s.price}</span>
+                  <span style={{ fontSize: 'var(--text-xs)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{s.unit}</span>
+                </div>
+                <p style={{ margin: '14px 0 0', fontSize: 'var(--text-sm)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)' }}>{s.who}</p>
+                <hr className="doi-rule" style={{ margin: 'var(--space-6) 0 var(--space-5)' }} />
+                <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 14, flex: 1 }}>
+                  {s.includes.map((it) => <CheckRow key={it}>{it}</CheckRow>)}
+                </ul>
+                <div style={{ marginTop: 'var(--space-7)' }}>
+                  <Button variant={s.tone === 'solid' ? 'primary' : 'secondary'} arrow href="contact.html" style={{ width: '100%', justifyContent: 'center' }}>
+                    {s.n === '01' ? 'Book a Diagnostic' : 'Start a conversation'}
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+        <p style={{ textAlign: 'center', margin: 'var(--space-7) auto 0', maxWidth: '52ch', fontSize: 'var(--text-sm)', lineHeight: 'var(--lh-body)', color: 'var(--text-muted)' }}>
+          Every retainer starts with a diagnostic. Most clients begin there, then move into a monthly engagement once the roadmap is clear.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function WhatYouGet() {
+  const pillars = [
+    { t: 'Strategy', d: 'Positioning, messaging, and a channel plan tied to revenue goals. We decide what matters before we spend a dollar building it.' },
+    { t: 'Creative Direction', d: 'Brand systems, campaign concepts, and the taste to keep every touchpoint on-brand. Built by someone who has run creative for product launches end to end.' },
+    { t: 'Execution', d: 'The work actually ships. Campaigns, content, events, and vendor coordination, managed async so you are not the bottleneck.' },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container" style={{ padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <SectionHeading eyebrow="What you get" title="Three disciplines," emphasis="one accountable owner." style={{ marginBottom: 'var(--space-8)' }} />
+        <div className="doi-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, borderTop: '1px solid var(--border)' }}>
+          {pillars.map((it, i) => (
+            <div key={it.t} style={{ padding: 'var(--space-7) var(--space-6)', borderBottom: '1px solid var(--border)', borderRight: i < 2 ? '1px solid var(--border)' : 'none' }}>
+              <h3 className="doi-display" style={{ fontSize: '2rem', marginBottom: 16 }}>{it.t}</h3>
+              <p style={{ margin: 0, fontSize: 'var(--text-sm)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)' }}>{it.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const ServiceIcon = ({ name }) => {
+  const p = {
+    identity: <React.Fragment><rect x="3.5" y="3.5" width="17" height="17" /><path d="M12 7.4 L15.6 12 L12 16.6 L8.4 12 Z" /></React.Fragment>,
+    website: <React.Fragment><rect x="3" y="5" width="18" height="14" /><line x1="3" y1="9" x2="21" y2="9" /><path d="M9 14 H15" /><path d="M12.6 11.6 L15 14 L12.6 16.4" /></React.Fragment>,
+    launch: <React.Fragment><path d="M4.5 19.5 C 9 19, 13.5 15, 18.5 5.5" /><path d="M13.5 5.5 H19 V11" /><rect x="3.4" y="18.4" width="2.2" height="2.2" /></React.Fragment>,
+    event: <React.Fragment><line x1="3" y1="6.5" x2="21" y2="6.5" /><rect x="5" y="6.5" width="14" height="3.4" /><line x1="6.5" y1="9.9" x2="6.5" y2="20" /><line x1="17.5" y1="9.9" x2="17.5" y2="20" /><line x1="6.5" y1="20" x2="17.5" y2="20" /><rect x="9.5" y="13.5" width="5" height="6.5" /></React.Fragment>,
+    email: <React.Fragment><rect x="2.5" y="9" width="13" height="9.5" /><path d="M2.5 10 L9 14 L15.5 10" /><path d="M19.5 5.5 A4 4 0 1 0 21 9.2" /><path d="M16.7 5.2 L19.7 5.4 L19.4 8.4" /></React.Fragment>,
+    pitch: <React.Fragment><rect x="3" y="4" width="18" height="12.5" /><path d="M6.5 12.5 L10 8.5 L13 11.5 L17.5 6" /><line x1="12" y1="16.5" x2="12" y2="20" /><line x1="8" y1="20" x2="16" y2="20" /></React.Fragment>,
+  };
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--crimson)" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter" style={{ flex: '0 0 auto' }}>
+      {p[name]}
+    </svg>
+  );
+};
+
+function ProjectWork() {
+  const items = [
+    { t: 'Brand identity and refresh', icon: 'identity' },
+    { t: 'Website strategy and direction', icon: 'website' },
+    { t: 'Product launch campaigns', icon: 'launch' },
+    { t: 'Tradeshow and event production', icon: 'event' },
+    { t: 'Email and lifecycle systems', icon: 'email' },
+    { t: 'Sales and pitch collateral', icon: 'pitch' },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container doi-split-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-8)', alignItems: 'center', padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <div>
+          <SectionHeading eyebrow="Project work" title="Need one thing done" emphasis="exceptionally well?">
+            Not every brand needs a retainer. When the scope is defined, we take on focused projects with a fixed price, starting from $1,500. Clear deliverables, a clear timeline, director-level craft.
+          </SectionHeading>
+          <div style={{ marginTop: 'var(--space-7)' }}>
+            <Button variant="secondary" arrow href="contact.html">Scope a project</Button>
+          </div>
+        </div>
+        <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, border: '1px solid var(--border)' }}>
+          {items.map((it, i) => (
+            <li key={it.t} style={{ padding: 'var(--space-6) var(--space-5)', borderBottom: i < items.length - 2 ? '1px solid var(--border)' : 'none', borderRight: i % 2 === 0 ? '1px solid var(--border)' : 'none', display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <ServiceIcon name={it.icon} />
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', fontWeight: 500, color: 'var(--text-primary)' }}>{it.t}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  const faqs = [
+    { q: 'How is this different from hiring an agency?', a: 'Agencies sell you hours across a rotating team. You get one senior owner who has built and scaled brands, thinks at director level, and stays accountable for results. No account managers in between.' },
+    { q: 'What does fractional actually mean?', a: 'You get senior marketing leadership for a fraction of a full-time salary and a fraction of the week. Most clients need direction and a few key things executed well, not a full-time hire sitting on payroll.' },
+    { q: 'Do I have to commit long term?', a: 'No. Retainers are month to month. Start with a diagnostic, move into a retainer if it makes sense, and pause or scale whenever your needs change.' },
+    { q: 'How do we communicate?', a: 'Async-first. Loom videos, a shared Notion dashboard, and one 60-minute strategy call each month. No weekly status meetings, no micromanagement.' },
+    { q: 'What size company is this for?', a: 'Growing brands, often past their first $1M, in AV and consumer tech, outdoor and lifestyle, or B2B and SaaS. If you have traction but no senior marketing owner, you are the fit.' },
+  ];
+  const [open, setOpen] = React.useState(0);
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container doi-split-2" style={{ display: 'grid', gridTemplateColumns: '0.8fr 1.2fr', gap: 'var(--space-8)', padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <SectionHeading eyebrow="Questions" title="The things founders" emphasis="ask first." />
+        <div style={{ borderTop: '1px solid var(--border)' }}>
+          {faqs.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={f.q} style={{ borderBottom: '1px solid var(--border)' }}>
+                <button onClick={() => setOpen(isOpen ? -1 : i)} style={{ width: '100%', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 20, padding: 'var(--space-5) 0', textAlign: 'left' }}>
+                  <span style={{ fontFamily: 'var(--font-editorial)', fontSize: 'var(--text-title)', fontWeight: 300, color: isOpen ? 'var(--text-primary)' : 'var(--text-secondary)', transition: 'color var(--dur) var(--ease-out)' }}>{f.q}</span>
+                  <span style={{ flex: '0 0 auto', color: 'var(--crimson)', fontSize: 24, lineHeight: 1, transform: isOpen ? 'rotate(45deg)' : 'none', transition: 'transform var(--dur) var(--ease-out)' }}>+</span>
+                </button>
+                <div style={{ maxHeight: isOpen ? 240 : 0, overflow: 'hidden', transition: 'max-height var(--dur-slow) var(--ease-out)' }}>
+                  <p style={{ margin: 0, padding: '0 0 var(--space-6)', maxWidth: '60ch', fontSize: 'var(--text-body)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)' }}>{f.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  React.useEffect(() => { window.DOIShell.initReveal(); }, []);
+  return (
+    <div style={{ background: 'var(--bg)' }}>
+      <Nav />
+      <PageHero eyebrow="Engagements" title="Senior marketing," emphasis="three ways in." lede="Start with a diagnostic. Scale into a retainer. Pause anytime. Every engagement is built so you get director-level thinking without a director-level salary." />
+      <Marquee items={['Diagnostic', 'Strategy', 'Creative Direction', 'Execution', 'Campaigns', 'Brand Systems', 'Retained Leadership']} />
+      <Engagements />
+      <WhatYouGet />
+      <ProjectWork />
+      <FAQ />
+      <CTABand heading="Not sure which engagement" emphasis="fits?" body="Book the $497 diagnostic. We will tell you exactly where your marketing is leaking and what to fix first, retainer or not." primary="Book a Diagnostic" secondary="Talk it through" secondaryHref="contact.html" />
+      <Footer />
+    </div>
+  );
+}
+
+window.__DOI_PAGE__ = 'services';
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

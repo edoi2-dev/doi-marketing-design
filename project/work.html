@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Work · Doi Marketing + Design Co.</title>
+<link rel="stylesheet" href="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/styles.css" />
+<link rel="stylesheet" href="shared/site.css" />
+<link rel="icon" href="assets/logos/Doi-Icon-darkBK.svg" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="shared/shell.jsx"></script>
+
+<script type="text/babel">
+const { Button, Eyebrow, SectionHeading, Stat, Badge, Marquee } = window.DOIMarketingDesignDesignSystem_a12e37;
+const { Media, Nav, Footer, CTABand, PageHero } = window.DOIShell;
+
+function WorkTile({ href, title, type, label, line, hoverLine, mediaSrc, mediaLabel, mediaPosition, area, dominant }) {
+  const [hover, setHover] = React.useState(false);
+  return (
+    <a href={href} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+      style={{ position: 'relative', display: 'block', textDecoration: 'none', gridArea: area, overflow: 'hidden', border: '1px solid var(--border)', minHeight: dominant ? 0 : 320 }}>
+      <Media label={mediaSrc ? '' : mediaLabel} ratio="auto" src={mediaSrc} position={mediaPosition}
+        overlay={hover ? 'linear-gradient(to top, rgba(10,11,12,0.85) 0%, rgba(10,11,12,0.38) 48%, rgba(10,11,12,0.10) 100%)' : 'linear-gradient(to top, rgba(10,11,12,0.72) 0%, rgba(10,11,12,0.18) 58%, rgba(10,11,12,0) 100%)'}
+        style={{ position: 'absolute', inset: 0, aspectRatio: 'auto', border: 'none', transition: 'transform var(--dur-slow) var(--ease-out)', transform: hover ? 'scale(1.03)' : 'scale(1)' }} />
+      <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: dominant ? 'var(--space-8)' : 'var(--space-7) var(--space-6)' }}>
+        <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--crimson)' }}>{type}</span>
+        <h3 className="doi-display" style={{ fontSize: dominant ? 'clamp(2.4rem, 4vw, 4rem)' : 'clamp(1.8rem, 2.4vw, 2.4rem)', margin: '8px 0 0', lineHeight: 0.96 }}>{title}</h3>
+        <p style={{ margin: '12px 0 0', fontFamily: 'var(--font-editorial)', fontStyle: 'italic', fontWeight: 300, fontSize: dominant ? 'var(--text-lead)' : 'var(--text-body)', lineHeight: 1.35, color: 'var(--text-secondary)', maxWidth: '34ch' }}>{hoverLine}</p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, marginTop: 'var(--space-6)', maxHeight: hover ? 60 : 0, opacity: hover ? 1 : 0, overflow: 'hidden', transition: 'max-height var(--dur) var(--ease-out), opacity var(--dur) var(--ease-out)' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 12, fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600, letterSpacing: 'var(--ls-button)', textTransform: 'uppercase', color: 'var(--text-primary)' }}>
+            View Case Study
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" style={{ transform: hover ? 'translateX(4px)' : 'none', transition: 'transform var(--dur) var(--ease-out)' }}><line x1="5" y1="12" x2="19" y2="12" /><polyline points="13 6 19 12 13 18" /></svg>
+          </span>
+          <span style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{label}</span>
+        </div>
+      </div>
+      <span style={{ position: 'absolute', left: 0, bottom: 0, height: 3, background: 'var(--crimson)', width: hover ? '100%' : '0%', transition: 'width var(--dur-slow) var(--ease-out)' }} />
+    </a>
+  );
+}
+
+function WorkGrid() {
+  const projects = [
+    { area: 'feature', dominant: true, href: 'case-vssl.html', title: 'VSSL MX Series', type: 'Product Launch Campaign', label: 'Soundvision / VSSL', hoverLine: 'A 12-month global launch. One marketing director.', mediaSrc: 'assets/photos/VSSL-MS1-lifestyle.png', mediaPosition: 'center' },
+    { area: 'brand', href: 'case-brand.html', title: 'Doi Marketing + Design Co.', type: 'Brand Identity', label: 'Self-initiated', hoverLine: 'Four layers. One mark. Built for swag.', mediaSrc: 'assets/photos/Doi-Icon-Leather.png', mediaPosition: 'center' },
+    { area: 'site', href: 'case-website.html', title: 'Doi Marketing + Design Website', type: 'Brand Strategy + Web Design', label: 'Self-initiated', hoverLine: 'Built with AI. Designed with intention.', mediaSrc: 'assets/photos/Doi-Website-tile.jpg', mediaPosition: 'center' },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container" style={{ padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <div className="doi-case-grid" style={{ display: 'grid', gridTemplateColumns: '1.35fr 1fr', gridTemplateRows: 'minmax(280px, 1fr) minmax(280px, 1fr)', gridTemplateAreas: '"feature brand" "feature site"', gap: 'var(--space-4)' }}>
+          {projects.map((p) => <WorkTile key={p.title} {...p} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  React.useEffect(() => { window.DOIShell.initReveal(); }, []);
+  return (
+    <div style={{ background: 'var(--bg)' }}>
+      <Nav />
+      <PageHero eyebrow="Selected Work" title="Built for brands that" emphasis="mean business." lede="Three case studies. Strategy, direction, and execution owned end to end." />
+      <Marquee items={['Product Launch', 'Brand Identity', 'Web Design', 'Strategy', 'Direction', 'Execution']} />
+      <WorkGrid />
+      <CTABand heading="Want results like" emphasis="these?" body="Every engagement starts with a $497 diagnostic and a 90-day roadmap. See exactly where your brand can grow next." primary="Book a Diagnostic" secondary="See engagements" secondaryHref="services.html" />
+      <Footer />
+    </div>
+  );
+}
+
+window.__DOI_PAGE__ = 'work';
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

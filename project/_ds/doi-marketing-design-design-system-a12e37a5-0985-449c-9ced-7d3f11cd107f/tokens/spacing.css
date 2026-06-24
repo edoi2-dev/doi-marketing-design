@@ -1,0 +1,48 @@
+/* DOI Marketing + Design — Spacing, borders, radii, elevation
+   Wide section padding, hairline borders, SHARP edges (no rounding). */
+
+:root {
+  /* ---- Spacing scale (8px base) ---- */
+  --space-1:  0.25rem;  /* 4 */
+  --space-2:  0.5rem;   /* 8 */
+  --space-3:  0.75rem;  /* 12 */
+  --space-4:  1rem;     /* 16 */
+  --space-5:  1.5rem;   /* 24 */
+  --space-6:  2rem;     /* 32 */
+  --space-7:  3rem;     /* 48 — standard section/card padding */
+  --space-8:  4rem;     /* 64 */
+  --space-9:  6rem;     /* 96 — section vertical rhythm */
+  --space-10: 8rem;     /* 128 */
+
+  --section-pad-x: 3rem;   /* wide horizontal padding on all sections */
+  --section-pad-y: 6rem;
+  --card-pad:      2rem;
+  --content-max:   1320px; /* @kind spacing */ /* 12-col container ceiling */
+
+  /* ---- Borders ---- */
+  --border-width:  1px;
+  --border-line:   1px solid var(--border);
+  --border-line-strong: 1px solid var(--border-strong);
+  --accent-bar:    2px solid var(--crimson); /* card bottom + eyebrow line */
+
+  /* ---- Radii — SHARP. No rounded corners on cards or buttons. ---- */
+  --radius-none: 0;
+  --radius-full: 9999px; /* reserved for avatars / status dots only */
+
+  /* ---- Elevation ----
+     Dark UI: depth comes from borders + crimson glow, not soft shadows.
+     A single restrained drop shadow exists for overlays/dialogs. */
+  --shadow-none:    none;
+  --shadow-overlay: 0 24px 60px -12px rgba(0, 0, 0, 0.7);
+  --shadow-card-hover: 0 1px 0 0 var(--crimson); /* crimson bottom accent on hover */
+
+  /* ---- Motion ---- */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --dur-fast:   160ms; /* @kind other */
+  --dur:        280ms; /* @kind other */
+  --dur-slow:   520ms; /* @kind other */
+
+  /* ---- Layout helpers ---- */
+  --nav-height: 76px; /* @kind spacing */
+}

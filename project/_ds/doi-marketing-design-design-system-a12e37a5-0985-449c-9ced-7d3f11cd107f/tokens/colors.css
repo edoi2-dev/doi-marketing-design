@@ -1,0 +1,51 @@
+/* DOI Marketing + Design — Color tokens
+   Dark, premium, editorial. Always a dark background; crimson is a
+   sharp accent only — never a large fill. Silver is secondary text. */
+
+:root {
+  /* ---- Base palette ---- */
+  --crimson:        #751D2F; /* primary accent, CTAs, dividers, eyebrows */
+  --crimson-bright: #8E2438; /* hover-lift on crimson surfaces only */
+  --charcoal:       #2F3237; /* secondary surfaces, cards */
+  --silver:         #B0B3B8; /* body / secondary text, labels */
+  --off-white:      #F7F7F8; /* primary text on dark */
+  --black:          #000000; /* deep backgrounds */
+  --dark-bg:        #0A0B0C; /* primary site background */
+
+  /* Tints derived from the palette (for borders, glows, washes) */
+  --silver-08:  rgba(176, 179, 184, 0.08);
+  --silver-12:  rgba(176, 179, 184, 0.12);
+  --silver-18:  rgba(176, 179, 184, 0.18);
+  --silver-40:  rgba(176, 179, 184, 0.40);
+  --crimson-10: rgba(117, 29, 47, 0.10);
+  --crimson-15: rgba(117, 29, 47, 0.15);
+  --crimson-30: rgba(117, 29, 47, 0.30);
+  --white-02:   rgba(247, 247, 248, 0.02);
+  --white-04:   rgba(247, 247, 248, 0.04);
+  --white-06:   rgba(247, 247, 248, 0.06);
+
+  /* ---- Semantic aliases ---- */
+  --bg:             var(--dark-bg);   /* page background */
+  --bg-deep:        var(--black);     /* deepest sections, overlays */
+  --surface-1:      var(--white-02);  /* default card wash on the dark bg */
+  --surface-2:      var(--white-04);  /* raised / hovered card */
+  --surface-solid:  var(--charcoal);  /* solid card / panel fill */
+
+  --text-primary:   var(--off-white); /* headings, primary copy */
+  --text-secondary: var(--silver);    /* body, captions, labels */
+  --text-muted:     var(--silver-40); /* disabled, faint meta */
+  --text-on-accent: var(--off-white); /* text atop crimson */
+
+  --accent:         var(--crimson);   /* the one accent color */
+  --accent-hover:   var(--crimson-bright);
+
+  --border:         var(--silver-08);  /* default 1px hairline */
+  --border-strong:  var(--silver-18);  /* emphasized separators */
+  --border-accent:  var(--crimson);    /* eyebrow + card bottom accent */
+
+  /* Radial crimson glow used behind key sections (8–15% opacity) */
+  --glow-crimson:   radial-gradient(closest-side, var(--crimson-15), transparent 70%);
+
+  /* Image-darkening overlay (always over photography) */
+  --img-overlay:    linear-gradient(to bottom, rgba(10,11,12,0.55), rgba(10,11,12,0.85)); /* @kind other */
+}

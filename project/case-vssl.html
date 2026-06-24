@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VSSL MX Series · Doi Marketing + Design Co.</title>
+<link rel="stylesheet" href="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/styles.css" />
+<link rel="stylesheet" href="shared/site.css" />
+<link rel="icon" href="assets/logos/Doi-Icon-darkBK.svg" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/_ds_bundle.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="shared/shell.jsx"></script>
+<script type="text/babel" src="shared/case.jsx"></script>
+
+<script type="text/babel">
+const { Marquee } = window.DOIMarketingDesignDesignSystem_a12e37;
+const { Nav, Footer, CTABand } = window.DOIShell;
+const { CaseHero, Section, Prose, ChallengeCards, Timeline, ImageRow, InventoryGrid, StatCallouts, DarkCallout, PullQuote, CaseFootNav } = window.DOICase;
+
+const challenge = [
+  { number: '01', tag: 'Solo Scale', title: 'One person, fifteen partners, hundreds of dealers', body: 'A 12-month globally distributed product launch across 15 partners and hundreds of dealers; executed by one marketing director with a part-time videographer.' },
+  { number: '02', tag: 'Managing Anticipation', title: 'The bar was set by the customers', body: 'The MS.1 had been requested for years. The bar for this launch was set by the customers themselves. Underwhelming it was not an option.' },
+  { number: '03', tag: 'Presale Sellout', title: 'Sold out before dealers could order', body: 'MA.1 presales through distribution sold out the first production batch before direct dealers could place orders. The launch had to be pushed 30 days; a problem caused entirely by marketing success.' },
+];
+
+const phases = [
+  { tag: 'Phase 1 · 12+ months out', title: 'Discovery', body: 'Dealer council sessions with dealers from across the country. MS.1 validated as a long-requested product from the customer base. Marketing Director heavily involved in quarterly dealer council meetings, bridging customer insight and product direction.' },
+  { tag: 'Phase 2 · 3–6 months out', title: 'Pre-Production', body: 'Asset production begins. MX Series logo designed. Branded shirt designed. 10+ assets produced: 3 sales sheets, 2 competitive analyses, catalog updates, and pull-up banners for regional shows.' },
+  { tag: 'Phase 3 · 30 days before dealer launch', title: 'Distribution Launch', body: 'Press kit distributed to 15 global distribution partners, product videos, install videos, teaser videos, product images, sales sheets, email templates. Pre-orders opened. MA.1 first batch sells out.' },
+  { tag: 'Phase 4 · 14 days before public', title: 'Direct Dealer Launch', body: 'Email teasers to 1,000+ dealer contacts. Social teasers across Facebook, Instagram, LinkedIn, and TikTok. Press releases distributed. Launch date adjusted 30 days for inventory replenishment.' },
+  { tag: 'Phase 5 · Launch + post-launch', title: 'Launch & Momentum', body: 'Homepage updated to hero the MX Series. Sales team mail-merge templates deployed. New product bundles created. Ongoing video production, ~10 videos to date. Tech support video program launched to proactively reduce inbound call volume.' },
+];
+
+const inventory = [
+  { title: 'Collateral', items: ['3 sales sheets', '2 competitive analyses', 'Catalog updates', 'Pull-up banners', 'Press kit', 'Email templates', 'Mail-merge templates for sales team'] },
+  { title: 'Video', note: '~10 total · ongoing', items: ['Teaser videos', 'Product overview', 'App walkthroughs', 'Install guides', 'Tech support how-to series'] },
+  { title: 'Social', note: '4 platforms', items: ['Teaser and launch content across Facebook, Instagram, LinkedIn, and TikTok'] },
+  { title: 'Brand + Swag', items: ['MX Series logo — designed by Marketing Director', 'Branded shirt — designed, produced, shipped with orders and distributed at shows'] },
+  { title: 'Web', items: ['Homepage updated to feature MX Series', 'New product bundle pages'] },
+];
+
+const results = [
+  { v: 'Thousands', l: 'MA.1 presales before direct dealer launch' },
+  { v: '15', l: 'Global distribution partners' },
+  { v: 'Hundreds', l: 'Direct dealer contacts' },
+  { v: '20%', l: 'Domestic email open rate' },
+  { v: '50%+', l: 'International email open rate (industry average ~21%)' },
+  { v: '12 mo', l: 'Concept to global launch' },
+  { v: '1', l: 'Marketing director who owned it all' },
+  { v: '10', l: 'Videos produced — and counting' },
+];
+
+function App() {
+  React.useEffect(() => { window.DOIShell.initReveal(); }, []);
+  return (
+    <div style={{ background: 'var(--bg)' }}>
+      <Nav />
+      <CaseHero
+        eyebrow="Case Study — Product Launch Campaign"
+        title="VSSL MX Series"
+        subtitle="MA.1 Streaming Amplifier + MS.1 Dedicated WiFi Streamer"
+        label="Work completed at Soundvision Technologies / VSSL"
+        meta={[
+          { k: 'Timeline', v: '12+ Months' },
+          { k: 'Team', v: 'Solo' },
+          { k: 'Partners', v: '15 Global' },
+          { k: 'Dealers', v: 'Hundreds' },
+        ]}
+        mediaLabel="" mediaSrc="assets/photos/VSSL-MS1-lifestyle.png" mediaPosition="center"
+      />
+
+      <Marquee items={['Discovery', 'Pre-Production', 'Distribution', 'Dealer Launch', 'Momentum']} />
+
+      <Section eyebrow="The Background" headline={<>A product <em style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>years</em> in the making</>}>
+        <Prose max="68ch">
+          The MS.1 dedicated WiFi streamer wasn't a product invented in a boardroom, it was a direct response to years of sustained customer demand. The launch wasn't just a marketing event. It was the delivery of a long-standing promise to a loyal dealer and customer network. The job of marketing wasn't to create desire. It was to make sure the delivery matched the anticipation.
+        </Prose>
+      </Section>
+
+      <Section eyebrow="In the Field" headline={<>Brand, collateral, and web — <em style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>built to match.</em></>}>
+        <ImageRow images={[
+          { src: 'assets/photos/vssl-site.jpg', tag: 'Web', title: 'MX Series landing experience' },
+          { src: 'assets/photos/vssl-mark.jpg', tag: 'Brand', title: 'MX Series mark' },
+          { src: 'assets/photos/vssl-sheet.jpg', tag: 'Collateral', title: 'MX Series sales sheet' },
+        ]} />
+      </Section>
+
+      <Section eyebrow="The Challenge" headline={<>Three problems. <em style={{ fontStyle: 'italic', color: 'var(--crimson)' }}>One person.</em></>}>
+        <ChallengeCards items={challenge} cols={3} />
+      </Section>
+
+      <Section eyebrow="The Process" headline={<>Five phases. <em style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>Twelve months.</em></>} glow>
+        <Timeline phases={phases} />
+      </Section>
+
+      <Section eyebrow="What Was Built" headline={<>10+ assets. 4 platforms. 10 videos. <em style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>All copy written in-house.</em></>}>
+        <InventoryGrid groups={inventory} />
+      </Section>
+
+      <Section eyebrow="The Numbers" headline="What happened.">
+        <StatCallouts stats={results} />
+      </Section>
+
+      <DarkCallout
+        headline="MOST COMPANIES WOULD STAFF A TEAM OF SIX."
+        sub="We did it with one."
+        body="No agency. No marketing department. One director who wrote every word, designed every asset, directed every video, appeared on camera, designed the logo, designed the swag, managed dealer communications, and kept the content engine running after launch day."
+      />
+
+      <PullQuote cite="The through line of the launch">
+        &ldquo;The MS.1 wasn't a product we invented. It was a product our customers asked for — for years. The job of marketing wasn't to create demand. It was to make sure the delivery <em style={{ fontStyle: 'italic', color: 'var(--crimson)' }}>matched the anticipation.</em>&rdquo;
+      </PullQuote>
+
+      <CaseFootNav
+        next={{ href: 'case-brand.html', label: 'Doi Brand Identity' }}
+      />
+
+      <CTABand heading="Want a launch run like" emphasis="this one?" body="Every engagement starts with a $497 diagnostic and a 90-day roadmap. See exactly where your brand can grow next." primary="Book a Diagnostic" secondary="See more work" secondaryHref="work.html" />
+      <Footer />
+    </div>
+  );
+}
+
+window.__DOI_PAGE__ = 'work';
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

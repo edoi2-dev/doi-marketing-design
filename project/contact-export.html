@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Start a Project · Doi Marketing + Design Co.</title>
+<link rel="stylesheet" href="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/styles.css" />
+<link rel="stylesheet" href="shared/site.css" />
+<link rel="icon" href="assets/logos/Doi-Icon-darkBK.svg" />
+<meta name="ext-resource-dependency" content="assets/logos/Doi-Icon-darkBK.svg" data-resource-id="logoIcon" />
+<meta name="ext-resource-dependency" content="assets/logos/Doi-DarkBackground.svg" data-resource-id="logoFull" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="_ds/doi-marketing-design-design-system-a12e37a5-0985-449c-9ced-7d3f11cd107f/_ds_bundle.js"></script>
+</head>
+<body>
+<!-- Netlify build-time form detection. The visible form is rendered by React/Babel
+     at runtime, which Netlify's deploy bot cannot parse, so this static twin
+     registers the form and its fields. Keep field names in sync with InquiryForm. -->
+<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="contact" />
+  <input type="text" name="full-name" />
+  <input type="text" name="company" />
+  <input type="email" name="email" />
+  <input type="text" name="engagement" />
+  <input type="text" name="timeline" />
+  <textarea name="message"></textarea>
+  <input name="bot-field" />
+</form>
+<div id="root"></div>
+
+<script type="text/babel" src="shared/shell-export.jsx"></script>
+
+<script type="text/babel">
+const { Button, Eyebrow, Input, Select, Textarea, Stat } = window.DOIMarketingDesignDesignSystem_a12e37;
+const { Media, Nav, Footer } = window.DOIShell;
+
+function InquiryForm() {
+  const [status, setStatus] = React.useState('idle'); // idle | sending | sent | error
+  const [fields, setFields] = React.useState({
+    'full-name': '',
+    company: '',
+    email: '',
+    engagement: 'Marketing Diagnostic · $497',
+    timeline: 'This quarter',
+    message: '',
+    'bot-field': '',
+  });
+
+  const set = (key) => (e) => setFields(f => ({ ...f, [key]: e.target.value }));
+
+  // Manual encode — more reliable than new FormData() with React-rendered fields
+  const encode = (data) =>
+    Object.entries(data)
+      .map(([k, v]) => encodeURIComponent(k) + '=' + encodeURIComponent(v))
+      .join('&');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus('sending');
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...fields }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Bad response ' + res.status);
+        setStatus('sent');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      })
+      .catch(() => setStatus('error'));
+  };
+
+  if (status === 'sent') {
+    return (
+      <div style={{ border: '1px solid var(--border-strong)', background: 'var(--surface-1)', padding: 'var(--space-8) var(--space-7)', minHeight: 420, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <Eyebrow>Received</Eyebrow>
+        <h2 className="doi-editorial" style={{ margin: '20px 0 0', fontSize: 'var(--text-title-lg)', fontWeight: 300, color: 'var(--text-primary)' }}>
+          Thanks. We will reply <em>within one business day.</em>
+        </h2>
+        <p style={{ margin: '18px 0 0', fontSize: 'var(--text-body)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)', maxWidth: '46ch' }}>
+          You will hear back from Eric directly, not an account manager. In the meantime, take a look at how we work.
+        </p>
+        <div style={{ marginTop: 'var(--space-7)', display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+          <Button variant="secondary" href="process.html">See the process</Button>
+          <Button variant="ghost" arrow href="work.html">View work</Button>
+        </div>
+      </div>
+    );
+  }
+  const sending = status === 'sending';
+  return (
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} style={{ display: 'grid', gap: 26 }}>
+      <input type="hidden" name="form-name" value="contact" />
+      <p hidden><label>Leave blank if human: <input name="bot-field" value={fields['bot-field']} onChange={set('bot-field')} /></label></p>
+      <div className="doi-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 26 }}>
+        <Input label="Full name" name="full-name" placeholder="Jane Founder" required value={fields['full-name']} onChange={set('full-name')} />
+        <Input label="Company" name="company" placeholder="Brand name" value={fields.company} onChange={set('company')} />
+      </div>
+      <Input label="Work email" name="email" type="email" placeholder="jane@brand.com" required value={fields.email} onChange={set('email')} />
+      <div className="doi-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 26 }}>
+        <Select label="Engagement" name="engagement" options={['Marketing Diagnostic · $497', 'Fractional Director · $2,500/mo', 'Embedded Partner · $4,500/mo', 'Project work', 'Not sure yet']} value={fields.engagement} onChange={set('engagement')} />
+        <Select label="Timeline" name="timeline" options={['ASAP', 'This quarter', 'Exploring options']} value={fields.timeline} onChange={set('timeline')} />
+      </div>
+      <Textarea label="What are you trying to fix?" name="message" rows={4} placeholder="A few sentences is plenty. Where is your marketing stuck?" value={fields.message} onChange={set('message')} />
+      {status === 'error' && (
+        <p style={{ margin: 0, fontSize: 'var(--text-sm)', lineHeight: 'var(--lh-body)', color: 'var(--crimson-bright)' }}>
+          Something went wrong sending that. Email <a href="mailto:eric@doimarketingdesign.com" style={{ color: 'var(--text-primary)', textDecoration: 'underline' }}>eric@doimarketingdesign.com</a> directly and we will pick it up.
+        </p>
+      )}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
+        <Button variant="primary" size="lg" arrow type="submit" disabled={sending}>{sending ? 'Sending…' : 'Send inquiry'}</Button>
+        <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>Director-level reply within one business day.</span>
+      </div>
+    </form>
+  );
+}
+
+function Hero() {
+  return (
+    <section style={{ position: 'relative', borderBottom: '1px solid var(--border)', overflow: 'hidden' }}>
+      <img src={window.__resources && window.__resources.logoIcon || 'assets/logos/Doi-Icon-darkBK.svg'} alt="" aria-hidden="true" style={{ position: 'absolute', right: '-4%', top: '6%', height: '112%', opacity: 0.04, filter: 'grayscale(1)' }} />
+      <div style={{ position: 'absolute', width: 640, height: 640, left: '-12%', top: '-28%', background: 'var(--glow-crimson)' }} />
+      <div className="doi-container" style={{ position: 'relative', paddingTop: 'calc(var(--nav-height) + var(--space-9))', paddingBottom: 'var(--space-8)' }}>
+        <Eyebrow>Start a project</Eyebrow>
+        <h1 className="doi-display" style={{ fontSize: 'var(--text-hero)', margin: '26px 0 0', maxWidth: '16ch' }}>
+          Tell us where your marketing is <span style={{ color: 'var(--crimson)' }}>stuck.</span>
+        </h1>
+        <p style={{ margin: '28px 0 0', maxWidth: '54ch', fontFamily: 'var(--font-body)', fontWeight: 300, fontSize: 'var(--text-body-lg)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)' }}>
+          Most conversations start with the $497 diagnostic. You walk away with a 90-day roadmap, whether or not we work together after. No pressure, no retainer required.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function FormBlock() {
+  const next = [
+    { n: '01', t: 'You send this form', d: 'Tell us where you are stuck. The more specific, the better.' },
+    { n: '02', t: 'We reply within a day', d: 'A direct response from Eric, not an automated sequence.' },
+    { n: '03', t: 'We book the diagnostic', d: 'A short call, then your audit and 90-day roadmap.' },
+  ];
+  return (
+    <section className="doi-reveal" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="doi-container doi-split-2" style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: 'var(--space-9)', alignItems: 'start', padding: 'var(--section-pad-y) var(--section-pad-x)' }}>
+        <div>
+          <Eyebrow>Inquiry</Eyebrow>
+          <h2 className="doi-editorial" style={{ margin: '18px 0 var(--space-7)', fontSize: 'var(--text-title)', fontWeight: 300, color: 'var(--text-primary)' }}>
+            A few details and we will take it from there.
+          </h2>
+          <InquiryForm />
+        </div>
+        <aside style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-7)' }}>
+          <div>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: 'var(--space-5)' }}>What happens next</div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              {next.map((s, i) => (
+                <div key={s.n} style={{ display: 'flex', gap: 'var(--space-5)', padding: 'var(--space-5) 0', borderTop: i === 0 ? 'none' : '1px solid var(--border)' }}>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', lineHeight: 1, color: 'var(--crimson)', flex: '0 0 auto' }}>{s.n}</span>
+                  <div>
+                    <div style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text-primary)', marginBottom: 6 }}>{s.t}</div>
+                    <p style={{ margin: 0, fontSize: 'var(--text-sm)', lineHeight: 1.6, color: 'var(--text-secondary)' }}>{s.d}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ border: '1px solid var(--border)', background: 'var(--surface-1)', padding: 'var(--space-6)' }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
+              <span style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', lineHeight: 1, color: 'var(--text-primary)' }}>$497</span>
+              <span style={{ fontSize: 'var(--text-xs)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>one-time</span>
+            </div>
+            <p style={{ margin: '14px 0 0', fontSize: 'var(--text-sm)', lineHeight: 'var(--lh-body)', color: 'var(--text-secondary)' }}>
+              The Marketing Diagnostic. A director-level audit and a prioritized 90-day roadmap. Yours to keep.
+            </p>
+          </div>
+          <div>
+            <div style={{ fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 600, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: 'var(--space-4)' }}>Direct</div>
+            <a href="mailto:eric@doimarketingdesign.com" style={{ display: 'block', fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)', color: 'var(--text-secondary)', marginBottom: 8, transition: 'color var(--dur) var(--ease-out)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}>eric@doimarketingdesign.com</a>
+            <div style={{ fontSize: 'var(--text-sm)', color: 'var(--text-muted)', letterSpacing: '0.04em' }}>St. George, Utah · Remote-first</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  React.useEffect(() => { window.DOIShell.initReveal(); }, []);
+  return (
+    <div style={{ background: 'var(--bg)' }}>
+      <Nav />
+      <Hero />
+      <FormBlock />
+      <Footer />
+    </div>
+  );
+}
+
+window.__DOI_PAGE__ = 'contact';
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+<template id="__bundler_thumbnail" data-bg-color="#0A0B0C">
+  <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="40,22 60,42 80,22" fill="none" stroke="#F7F7F8" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+    <polyline points="40,58 60,38 80,58" fill="none" stroke="#751D2F" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+  </svg>
+</template>
+</body>
+</html>
